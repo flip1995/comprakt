@@ -452,7 +452,7 @@ impl GenInstrBlock {
                         tuple_elems[0]
                     });
 
-                    let dst = if let Some(elem0) = result_tuple_0 {
+                    if let Some(elem0) = result_tuple_0 {
                         // (gen_dst_slot has implicit mark_computed)
                         let slot = self.gen_dst_slot(block, Node::from(elem0), alloc);
                         // but other nodes will require Call to be computed
@@ -471,8 +471,7 @@ impl GenInstrBlock {
                         }
                         // result_tuple_0 is None, so nothing to mark as computed
                         None
-                    };
-                    dst
+                    }
                 };
                 log::debug!("\tdst slot {:?}", dst);
 
